@@ -1,14 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:shrigangaj/operation.dart';
+import 'package:shrigangaj/pages/Address.dart';
 
 class Bag extends StatefulWidget {
   @override
   _BagState createState() => _BagState();
 }
+String id;
+TextEditingController firstNameController = TextEditingController();
+TextEditingController secondNameController = TextEditingController();
+TextEditingController phoneNumberController = TextEditingController();
+TextEditingController pinNumberController = TextEditingController();
+TextEditingController addressController = TextEditingController();
+String FirstName;
+String SecondName;
+String PhoneNumber;
+String PINNumber;
+String address;
 
 class _BagState extends State<Bag> {
+
+
+
   @override
-  int count=0;
-  bool ispress=false;
+  int count=1;
+  bool ispress=true;
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -35,7 +51,7 @@ class _BagState extends State<Bag> {
 //                color: Colors.white70,
                   elevation: 10,
                     child: InkWell(
-                      splashColor: Colors.blue.withAlpha(30),
+                      splashColor: Colors.deepOrange,
                       onTap: (){},
                       child: Container(
                         width: MediaQuery.of(context).size.width,
@@ -44,7 +60,8 @@ class _BagState extends State<Bag> {
                           children: [
                             Container(
                               height: MediaQuery.of(context).size.height/2.5/1.6,
-                              // Firebase code of showing data
+                              // Firebase code of showing
+
                             ),
                             Divider(
                               color: Colors.black,
@@ -134,6 +151,8 @@ class FORMS extends StatefulWidget {
 }
 
 class _FORMSState extends State<FORMS> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -142,6 +161,7 @@ class _FORMSState extends State<FORMS> {
         child: Column(
           children: [
             Form(
+              key: _formKey,
               child: Column(
                 children: [
                   TextFormField(
@@ -149,6 +169,18 @@ class _FORMSState extends State<FORMS> {
                         border: OutlineInputBorder(),
                         labelText: 'Recipient First Name'
                     ),
+                    validator: (value)
+                    {
+                      if (value.isEmpty) {
+                        return 'Please enter first Name';
+                      }
+                      return null;
+                    },
+                    onChanged: (value)
+                    {
+                      FirstName=value;
+                    },
+                    controller: firstNameController,
                   ),
                   SizedBox(height: 10,),
                   TextFormField(
@@ -156,20 +188,58 @@ class _FORMSState extends State<FORMS> {
                         border: OutlineInputBorder(),
                         labelText: 'Recipient Last Name'
                     ),
+                    validator: (value)
+                    {
+                      if (value.isEmpty) {
+                        return 'Please enter last Name';
+                      }
+                      return null;
+                    },
+                    onChanged: (value)
+                    {
+                      SecondName=value;
+                    },
+                    controller: secondNameController,
                   ),
                   SizedBox(height: 10,),
                   TextFormField(
+                    keyboardType: TextInputType.phone,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Recipient Phone Number'
                     ),
+                    validator: (value)
+                    {
+                      if (value.length!=10) {
+                        return 'Please enter valid  Number';
+                      }
+                      return null;
+                    },
+                    onChanged: (value)
+                    {
+                      PhoneNumber=value;
+                    },
+                    controller: phoneNumberController,
                   ),
                   SizedBox(height: 10,),
                   TextFormField(
+                    keyboardType: TextInputType.phone,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'PIN Number'
                     ),
+                    validator: (value)
+                    {
+                      if (value.length!=6) {
+                        return 'Please enter valid PIN';
+                      }
+                      return null;
+                    },
+                    onChanged: (value)
+                    {
+                      PINNumber=value;
+                    },
+                    controller: pinNumberController,
                   ),
                   SizedBox(height: 10,),
                   TextFormField(
@@ -177,6 +247,18 @@ class _FORMSState extends State<FORMS> {
                         border: OutlineInputBorder(),
                         labelText: 'Address Line 1'
                     ),
+                    validator: (value)
+                    {
+                      if (value.isEmpty) {
+                        return 'Please enter address';
+                      }
+                      return null;
+                    },
+                    onChanged: (value)
+                    {
+                      address=value;
+                    },
+                    controller: addressController,
                   ),
                   SizedBox(height: 10,),
                   TextFormField(
@@ -184,6 +266,7 @@ class _FORMSState extends State<FORMS> {
                         border: OutlineInputBorder(),
                         labelText: 'Address Line 2'
                     ),
+
                   ),
                   SizedBox(height: 14,),
                   Align(
@@ -198,7 +281,14 @@ class _FORMSState extends State<FORMS> {
                         ),
                         color: Colors.deepOrange,
                         child: Text("Save",style: TextStyle(color: Colors.white,fontSize: 20),),
-                        onPressed: (){},
+                        onPressed: (){
+                          if(_formKey.currentState.validate())
+                          {
+                            uploadingData(FirstName, SecondName, PhoneNumber, PINNumber,address);
+//                            Navigator.of(context).pop();
+                          }
+                          clearText();
+                        },
                       ),
                     ),
                   ),
@@ -219,4 +309,11 @@ class _FORMSState extends State<FORMS> {
       ),
     );
   }
+}
+void clearText() {
+  firstNameController.clear();
+  secondNameController.clear();
+  pinNumberController.clear();
+  phoneNumberController.clear();
+  addressController.clear();
 }

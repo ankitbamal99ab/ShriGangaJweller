@@ -7,6 +7,7 @@ class FAQ extends StatefulWidget {
 
 class _FAQState extends State<FAQ> {
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -17,11 +18,26 @@ class _FAQState extends State<FAQ> {
           child: Column(
             children: [
               ListTile(
-                leading: Icon(Icons.one_k),
+//                leading: Icon(Icons.looks_one),
+              leading:IconButton(
+                icon: Icon(Icons.add_circle_outline),
+                onPressed: ()
+                {
+                  return showDialog(
+                      context: context,
+                      builder: (context) =>AlertDialog(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                        title: Text("Product Key is 009##112ABK"),
+                      ),
+                  );
+                },
+              ),
                 title: Text("What is Product key"),
               ),
               ListTile(
-                leading: Icon(Icons.two_k),
+                leading: Icon(Icons.looks_two),
                 title: Text("Where do I find my Office"),
               ),
               ListTile(

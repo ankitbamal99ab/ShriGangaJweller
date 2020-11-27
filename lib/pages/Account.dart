@@ -80,58 +80,62 @@ class _AccountState extends State<Account> {
           width: double.infinity,
           height: MediaQuery.of(context).size.height/5,
           color: Colors.black12,
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Container(
-                    child: FlatButton.icon(
+          child: InkWell(
+            splashColor: Colors.blue,
+            onTap: (){},
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      child: FlatButton.icon(
 //                        onPressed: (){},
-                        icon: Icon(Icons.refresh,color: Colors.black,size: 40,),label: Text("Easy\nReturn ",style: TextStyle(color: Color(0xFF0B0086),fontWeight: FontWeight.bold,fontSize: 16),),
+                          icon: Icon(Icons.refresh,color: Colors.black,size: 40,),label: Text("Easy\nReturn ",style: TextStyle(color: Color(0xFF0B0086),fontWeight: FontWeight.bold,fontSize: 16),),
 //
-                    ),
-                    color: Colors.black12,
-                    width: MediaQuery.of(context).size.width/2,
-                     height: MediaQuery.of(context).size.height/5*(1/2),
+                      ),
+                      color: Colors.black12,
+                      width: MediaQuery.of(context).size.width/2,
+                       height: MediaQuery.of(context).size.height/5*(1/2),
 //                    height: double.infinity,
-                  ),
-                  Container(
-                    child: FlatButton.icon(
-//                        onPressed: (){},
-                      icon: Icon(Icons.swap_horiz,color: Colors.black,size: 40,),label: Text("Easy\nExchange",style: TextStyle(color: Color(0xFF0B0086),fontWeight: FontWeight.bold,fontSize: 16),),
-//
                     ),
-                    color: Colors.black12,
-                    width: MediaQuery.of(context).size.width/2,
-                    height: MediaQuery.of(context).size.height/5*(1/2),
-                  )
-                ],
-              ),
-              Row(
-                children: [
-                  Container(
-                    child: FlatButton.icon(
+                    Container(
+                      child: FlatButton.icon(
 //                        onPressed: (){},
-                      icon: Icon(Icons.star,color: Colors.black,size: 40,),label: Text("Certified\n Jwellery ",style: TextStyle(color: Color(0xFF0B0086),fontWeight: FontWeight.bold,fontSize: 16),),
+                        icon: Icon(Icons.swap_horiz,color: Colors.black,size: 40,),label: Text("Easy\nExchange",style: TextStyle(color: Color(0xFF0B0086),fontWeight: FontWeight.bold,fontSize: 16),),
 //
-                    ),
-                    color: Colors.black12,
-                    width: MediaQuery.of(context).size.width/2,
-                    height: MediaQuery.of(context).size.height/5*(1/2),
-                  ),
-                  Container(
-                    child: FlatButton.icon(
+                      ),
+                      color: Colors.black12,
+                      width: MediaQuery.of(context).size.width/2,
+                      height: MediaQuery.of(context).size.height/5*(1/2),
+                    )
+                  ],
+                ),
+                Row(
+                  children: [
+                    Container(
+                      child: FlatButton.icon(
 //                        onPressed: (){},
-                      icon: Icon(Icons.directions_car,color: Colors.black,size: 40,),label: Text("Secured\ndelivery  ",style: TextStyle(color: Color(0xFF0B0086),fontWeight: FontWeight.bold,fontSize: 16),),
+                        icon: Icon(Icons.star,color: Colors.black,size: 40,),label: Text("Certified\n Jwellery ",style: TextStyle(color: Color(0xFF0B0086),fontWeight: FontWeight.bold,fontSize: 16),),
 //
+                      ),
+                      color: Colors.black12,
+                      width: MediaQuery.of(context).size.width/2,
+                      height: MediaQuery.of(context).size.height/5*(1/2),
                     ),
-                    color: Colors.black12,
-                    width: MediaQuery.of(context).size.width/2,
-                    height: MediaQuery.of(context).size.height/5*(1/2),
-                  )
-                ],
-              ),
-            ],
+                    Container(
+                      child: FlatButton.icon(
+//                        onPressed: (){},
+                        icon: Icon(Icons.directions_car,color: Colors.black,size: 40,),label: Text("Secured\ndelivery  ",style: TextStyle(color: Color(0xFF0B0086),fontWeight: FontWeight.bold,fontSize: 16),),
+//
+                      ),
+                      color: Colors.black12,
+                      width: MediaQuery.of(context).size.width/2,
+                      height: MediaQuery.of(context).size.height/5*(1/2),
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
 //          SizedBox(height: 20,)
