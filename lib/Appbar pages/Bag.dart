@@ -1,8 +1,61 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:shrigangaj/operation.dart';
 import 'package:shrigangaj/pages/Address.dart';
 
+
+
+class Data extends StatefulWidget {
+  @override
+  _DataState createState() => _DataState();
+}
+
+class _DataState extends State<Data> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: StreamBuilder<QuerySnapshot>(
+        stream: FirebaseFirestore.instance.collection("Address").snapshots(),
+        builder: (context, snapshot) {
+          DocumentSnapshot data = snapshot.data.documents[0];
+          return !snapshot.hasData
+              ? Center(child: CircularProgressIndicator())
+              : Container(
+            child: Bag(
+              documentSnapshot: data,
+              // ignore: deprecated_member_use
+              id: data.documentID,
+              name: data['firstName'],
+              phoneNumber: data['phoneNumber'],
+              pinNumber: data['pin'],
+              Address: data['address'],
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+
+
 class Bag extends StatefulWidget {
+
+  final String name;
+  final String phoneNumber;
+  final String pinNumber;
+  final String Address;
+  final String id;
+  final DocumentSnapshot documentSnapshot;
+  Bag({
+    @required this.name,
+    @required this.documentSnapshot,
+    @required this.id,
+    @required this.phoneNumber,
+    @required this.pinNumber,
+    @required this.Address,
+  });
+
   @override
   _BagState createState() => _BagState();
 }
@@ -60,8 +113,20 @@ class _BagState extends State<Bag> {
                           children: [
                             Container(
                               height: MediaQuery.of(context).size.height/2.5/1.6,
-                              // Firebase code of showing
+                              // Firebase code of showing.........................................................
+                              child: Column(
+                                children: [
+                                  ListTile(
+                                    title: Text(widget.name,style: TextStyle(fontSize: 20),),
+                                    subtitle:Text(widget.phoneNumber),
+                                  ),
+                                  ListTile(
+                                    title: Text(widget.pinNumber),
+                                    subtitle: Text(widget.Address),
+                                  )
 
+                                ],
+                              )
                             ),
                             Divider(
                               color: Colors.black,
