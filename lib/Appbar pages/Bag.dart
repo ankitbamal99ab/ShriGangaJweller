@@ -74,7 +74,6 @@ String address;
 class _BagState extends State<Bag> {
 
 
-
   @override
   int count=1;
   bool ispress=true;
@@ -117,8 +116,8 @@ class _BagState extends State<Bag> {
                               child: Column(
                                 children: [
                                   ListTile(
-                                    title: Text(widget.name,style: TextStyle(fontSize: 20),),
-                                    subtitle:Text(widget.phoneNumber),
+                                    title: Text(widget.name ?? 'null',style: TextStyle(fontSize: 20),),
+                                    subtitle:Text(widget.phoneNumber ?? 'null'),
                                   ),
                                   ListTile(
                                     title: Text(widget.pinNumber),

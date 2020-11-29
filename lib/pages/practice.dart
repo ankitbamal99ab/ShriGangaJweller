@@ -42,7 +42,7 @@ class ProductDisplayGrid extends StatelessWidget {
                                     flex: 4,
                                     child: Container(
                                       child: Image.network(
-                                        "${document.data()['images'][1]}",
+                                        "${document.data()['images'][0]}",
                                         fit: BoxFit.fill,),
                                     ),
                                   ),

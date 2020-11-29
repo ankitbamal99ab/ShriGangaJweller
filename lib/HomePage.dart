@@ -59,7 +59,7 @@ _selectedindex=index;
               {
                 Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => FAQ()));
               },
-            )
+            ),
           ],
         ),
       ),
